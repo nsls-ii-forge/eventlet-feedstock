@@ -1,0 +1,48 @@
+{% set name = "eventlet" %}
+{% set version = "0.25.1" %}
+{% set sha256 = "6c9c625af48424c4680d89314dbe45a76cc990cf002489f9469ff214b044ffc1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  noarch: "python"
+  script: "{{ PYTHON }} -m pip install . -vv "
+
+requirements:
+  build:
+    - python >=3.6
+    - pip
+  run:
+    - python
+    - greenlet >=0.3
+    - enum34  # [py<34]
+    - dnspython >=1.15.0
+    - monotonic >=1.4
+    - six >=1.10.0
+    - pyopenssl
+
+test:
+  imports:
+    - eventlet
+    - eventlet.green
+    - eventlet.green.OpenSSL
+    - eventlet.green.http  # [py3k]
+    - eventlet.green.urllib
+    - eventlet.greenio
+    - eventlet.hubs
+    - eventlet.support
+
+about:
+  home: "http://eventlet.net"
+  license: "MIT"
+  license_family: "MIT"
+  license_file: LICENSE
+  summary: "Highly concurrent networking library"
+
