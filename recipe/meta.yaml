@@ -1,6 +1,6 @@
 {% set name = "eventlet" %}
-{% set version = "0.29.0" %}
-{% set sha256 = "a4f57390198cbd34cc948cfa57a86edd33437b23b57ba7d4be794989f2435c76" %}
+{% set version = "0.30.2" %}
+{% set sha256 = "1811b122d9a45eb5bafba092d36911bca825f835cb648a862bbf984030acff9d" %}
 
 package:
   name: {{ name|lower }}
